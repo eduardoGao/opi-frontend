@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
 
 function AddQuestion () {
+  const { isAuthenticated, user } = useAuth0()
+
   const initialState = {
     question: null,
     tag: null,
-    user: null
+    user: user?.nickname
   }
 
   const [questionData, setQuestionData] = useState(initialState)
@@ -18,18 +21,26 @@ function AddQuestion () {
 
   const handlePost = (e) => {
     e.preventDefault()
-    // console.log(questionData)
+    console.log(questionData)
 
-    fetch('http://localhost:3001/api/questions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(questionData)
-    })
-      .then(response => response.json())
-      .then(data => console.log(data))
+    // fetch('http://localhost:3001/api/questions', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(questionData)
+    // })
+    //   .then(response => response.json())
+    //   .then(data => console.log(data))
   }
+
+  // if (!isAuthenticated) {
+  //   return (
+  //     <div>
+  //       <h3>Para publicar una pregunta sólo inicia sesión</h3>
+  //     </div>
+  //   )
+  // }
 
   return (
     <div>
