@@ -1,10 +1,12 @@
 import React from 'react'
+import { HeaderContainer } from './styles'
 
 const Header = () => {
   return (
-    <div>
+    <HeaderContainer>
       <h3>Ask me</h3>
-    </div>
+      <div>Stats</div>
+    </HeaderContainer>
   )
 }
 

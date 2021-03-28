@@ -1,13 +1,14 @@
 import React from 'react'
 import Header from '../../components/header'
-import Questions from '../../components/questions'
+import QuestionsContent from '../../components/questionsContent'
+import { HomeContainer } from './styles'
 
 const Home = () => {
   return (
-    <div>
+    <HomeContainer>
       <Header />
-      <Questions />
-    </div>
+      <QuestionsContent />
+    </HomeContainer>
   )
 }
 
