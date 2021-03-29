@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import QuestionCard from '../QuestionCard'
-import { Questions, TitleSection } from './styles'
-
+import { Questions, QuestionsScroll, GenetateContainer } from './styles'
+import GenerateQuestion from '../../generate'
 const ShowQuestions = () => {
   const [questions, setQuestions] = useState([])
 
-  // https://rickandmortyapi.com/api
   const fetchQuestions = () => {
     try {
       fetch('http://localhost:3001/api/questions')
@@ -14,23 +13,25 @@ const ShowQuestions = () => {
           setQuestions(data)
         })
     } catch (error) {
-
+      console.error(error)
     }
   }
 
   useEffect(() => {
     fetchQuestions()
-  }, [])
-
-  const questionsTotal = questions.length
+  }, [questions])
 
   return (
     <Questions>
-      <TitleSection>Publicadas</TitleSection>
-      {questionsTotal}
+      <GenetateContainer>
+        <p>Genera preguntas random con su respectiva respuesta</p>
+        <GenerateQuestion />
+      </GenetateContainer>
+      <QuestionsScroll>
       {
         questions.map(question => <QuestionCard key={question._id} info={question} />)
       }
+      </QuestionsScroll>
     </Questions>
   )
 }

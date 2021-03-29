@@ -14,8 +14,14 @@ export const Button = styled.button`
 
 export const ButtonAnswer = styled(Button)`
   background: transparent;
-  border: 1px solid ${({ theme: { color } }) => color.gray};
-  color: ${({ theme: { color } }) => color.gray};
+  border: 1px solid ${({ theme: { color } }) => color.primary};
+  color: ${({ theme: { color } }) => color.primary};
   width: 100px;
   margin-top: 6px;
+`
+export const ButtonGenerate = styled(ButtonAnswer)`
+  border: 1px solid ${({ theme: { color } }) => color.secondary};
+  color: ${({ theme: { color } }) => color.secondary};
+  width: 150px;
+  margin: 0 auto;
 `

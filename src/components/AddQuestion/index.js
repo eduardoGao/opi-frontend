@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import LoginButton from '../Buttons/LoginButton'
-import { Subtitle, TitleWrapper } from './styles.js'
+import { ButtonAnswer } from '../Buttons/styles'
+import { Subtitle, TitleWrapper, FormContainer, Label, Input, Select, Form } from './styles.js'
 
 function AddQuestion () {
   const { isAuthenticated, user } = useAuth0()
@@ -9,7 +10,9 @@ function AddQuestion () {
   const initialState = {
     question: null,
     tag: null,
-    user: user?.name
+    user: user?.name,
+    answer_text: null,
+    answer_user: null
   }
 
   const [questionData, setQuestionData] = useState(initialState)
@@ -17,6 +20,8 @@ function AddQuestion () {
   const handleChange = (e) => {
     setQuestionData({
       ...questionData,
+      answer_text: null,
+      answer_user: null,
       [e.target.name]: e.target.value
     })
   }
@@ -46,30 +51,30 @@ function AddQuestion () {
   }
 
   return (
-    <div>
-      <form onSubmit={handlePost}>
-        <label htmlFor="question">
+    <FormContainer>
+      <Form onSubmit={handlePost}>
+        <Label htmlFor="question">
           <span>Escribe tu pregunta</span>
-          <input
+          <Input
             type="text"
             id='question'
             name='question'
             onChange={handleChange}
           />
-        </label>
-        <label htmlFor="tag">
+        </Label>
+        <Label htmlFor="tag">
           <span>Elige una categoría</span>
-          <select name="tag" id="tag" onChange={handleChange}>
+          <Select name="tag" id="tag" onChange={handleChange}>
             <option value="">-</option>
             <option value="tecnica">Tecnología</option>
             <option value="legal">Leyes</option>
             <option value="administrativa">Administración</option>
             <option value="economica">Economía</option>
-          </select>
-        </label>
-        <input type="submit"/>
-      </form>
-    </div>
+          </Select>
+        </Label>
+        <ButtonAnswer type="submit">Enviar</ButtonAnswer>
+      </Form>
+    </FormContainer>
   )
 }
 
