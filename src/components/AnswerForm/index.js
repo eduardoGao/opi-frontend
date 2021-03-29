@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
+import { FormContainer, Label, Input } from '../AddQuestion/styles'
+import { ButtonAnswer } from '../Buttons/styles'
 
 function AnswerForm ({ id, setAnswerForm }) {
-  console.log(id)
+  // console.log(id)
   const { user } = useAuth0()
 
   const initialState = {
@@ -38,20 +40,20 @@ function AnswerForm ({ id, setAnswerForm }) {
   }
 
   return (
-    <div>
+    <FormContainer>
       <form onSubmit={handlePost}>
-        <label htmlFor="answer">
+        <Label htmlFor="answer">
           <span>Escribe tu respuesta</span>
-            <input
+            <Input
               type="text"
               name="answer_text"
               id='answer'
               onChange={handleChange}
             />
-        </label>
-        <input type="submit" value="Responder"/>
+        </Label>
+        <ButtonAnswer type="submit">Responder</ButtonAnswer>
       </form>
-    </div>
+    </FormContainer>
   )
 }
 

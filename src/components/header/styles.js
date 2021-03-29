@@ -11,6 +11,7 @@ export const HeaderContainer = styled.header`
   align-items: center;
   height: 70px;
   padding: 0 32px;
+  border-radius: 8px;
 `
 
 export const NavBar = styled.nav`
@@ -26,6 +27,6 @@ export const Link = styled(LinkRouter)`
   text-decoration: none;
 
   &:hover {
-    color: red;
+    color: ${({ theme: { color } }) => color.secondary};
   }
 `

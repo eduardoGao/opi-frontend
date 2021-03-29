@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import QuestionCard from '../QuestionCard'
-import { Questions, TitleSection, QuestionsScroll } from './styles'
+import { Questions, QuestionsScroll, GenetateContainer } from './styles'
 import GenerateQuestion from '../../generate'
 const ShowQuestions = () => {
   const [questions, setQuestions] = useState([])
@@ -13,7 +13,7 @@ const ShowQuestions = () => {
           setQuestions(data)
         })
     } catch (error) {
-
+      console.error(error)
     }
   }
 
@@ -21,13 +21,12 @@ const ShowQuestions = () => {
     fetchQuestions()
   }, [questions])
 
-  const questionsTotal = questions.length
-
   return (
     <Questions>
-      <TitleSection>Publicadas</TitleSection>
-      {questionsTotal}
-      <GenerateQuestion />
+      <GenetateContainer>
+        <p>Genera preguntas random con su respectiva respuesta</p>
+        <GenerateQuestion />
+      </GenetateContainer>
       <QuestionsScroll>
       {
         questions.map(question => <QuestionCard key={question._id} info={question} />)

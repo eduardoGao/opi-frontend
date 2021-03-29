@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { ButtonAnswer } from '../Buttons/styles'
 import AnswerForm from '../AnswerForm'
 import { useAuth0 } from '@auth0/auth0-react'
-import { Card, User, Question, Tag, PublishedAt, Day, Hour, UserInfo, CardContainer, MessageAlert, CardAnswer, Answer, AnswerInfo, UserAnswer, AnswerT, MessageAd } from './styles'
+import { Card, User, Question, Tag, PublishedAt, Day, Hour, UserInfo, CardContainer, MessageAlert, CardAnswer, Answer, AnswerInfo, UserAnswer, AnswerT, MessageAd, TitleSection } from './styles'
 
 function QuestionCard ({ info }) {
   const { isAuthenticated, user } = useAuth0()
@@ -61,6 +61,7 @@ function QuestionCard ({ info }) {
 
       {message && <MessageAlert>Inicia sesión para responder preguntas.</MessageAlert>}
       {answerForm && <AnswerForm id={info._id} setAnswerForm={setAnswerForm} />}
+
     </CardContainer>
   )
 }

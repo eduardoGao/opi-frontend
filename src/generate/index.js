@@ -1,4 +1,5 @@
 import React from 'react'
+import { ButtonGenerate } from '../components/Buttons/styles'
 
 const questions = [
   '¿Cómo se hace el proceso N?',
@@ -62,20 +63,20 @@ const generateQuestion = {
   answer_user: randomUserAnswer
 }
 
-for (let i = 0; i < 1000; i++) {
-  const randomQuestion = questions[Math.floor(Math.random() * questions.length)]
-  const randomUser = users[Math.floor(Math.random() * users.length)]
-  const randomTag = tags[Math.floor(Math.random() * tags.length)]
+// for (let i = 0; i < 1000; i++) {
+//   const randomQuestion = questions[Math.floor(Math.random() * questions.length)]
+//   const randomUser = users[Math.floor(Math.random() * users.length)]
+//   const randomTag = tags[Math.floor(Math.random() * tags.length)]
 
-  const generateQuestion = {
-    user: randomUser,
-    question: randomQuestion,
-    tag: randomTag
-  }
-  console.log(generateQuestion)
-}
+//   const generateQuestion = {
+//     user: randomUser,
+//     question: randomQuestion,
+//     tag: randomTag
+//   }
+//   console.log(generateQuestion)
+// }
 
-console.log(generateQuestion)
+// console.log(generateQuestion)
 
 const handlePost = (e) => {
   e.preventDefault()
@@ -93,7 +94,7 @@ const handlePost = (e) => {
 
 function GenerateQuestion () {
   return (
-    <button onClick={handlePost}>Generar pregunta</button>
+    <ButtonGenerate onClick={handlePost}>Generar pregunta</ButtonGenerate>
   )
 }
 

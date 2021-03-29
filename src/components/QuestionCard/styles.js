@@ -92,3 +92,7 @@ export const Hour = styled.span`
 export const AnswerText = styled.div`
 
 `
+export const TitleSection = styled.h4`
+  font-size: 16px;
+  text-align: center;
+`
