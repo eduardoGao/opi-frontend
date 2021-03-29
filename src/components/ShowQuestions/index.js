@@ -28,11 +28,9 @@ const ShowQuestions = () => {
     <Questions>
       <TitleSection>Publicadas</TitleSection>
       {questionsTotal}
-      <div>
-        {
-          questions.map(question => <QuestionCard key={question._id} info={question} />)
-        }
-      </div>
+      {
+        questions.map(question => <QuestionCard key={question._id} info={question} />)
+      }
     </Questions>
   )
 }

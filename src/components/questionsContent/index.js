@@ -1,12 +1,15 @@
 import React from 'react'
 import ShowQuestions from '../ShowQuestions'
 import AddQuestion from '../../components/AddQuestion'
-import { QuestionsContainer, Title } from './styles'
+import { QuestionsContainer, Title, Subtitle, TitleWrapper } from './styles'
 
 const QuestionsContent = () => {
   return (
     <QuestionsContainer>
-      <Title>Publica y responde preguntas.</Title>
+      <TitleWrapper>
+        <Title>Publica y responde las preguntas que necesitas.</Title>
+        <Subtitle>Preguntas sobre leyes, administrativas, económicas y tecnológicas</Subtitle>
+      </TitleWrapper>
       <AddQuestion />
       <ShowQuestions />
     </QuestionsContainer>
