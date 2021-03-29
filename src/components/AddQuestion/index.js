@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
+import LoginButton from '../Buttons/LoginButton'
+import { ButtonAnswer } from '../Buttons/styles'
+import { Subtitle, TitleWrapper, FormContainer, Label, Input, Select, Form } from './styles.js'
 
 function AddQuestion () {
   const { isAuthenticated, user } = useAuth0()
@@ -7,7 +10,9 @@ function AddQuestion () {
   const initialState = {
     question: null,
     tag: null,
-    user: user?.nickname
+    user: user?.name,
+    answer_text: null,
+    answer_user: null
   }
 
   const [questionData, setQuestionData] = useState(initialState)
@@ -15,6 +20,8 @@ function AddQuestion () {
   const handleChange = (e) => {
     setQuestionData({
       ...questionData,
+      answer_text: null,
+      answer_user: null,
       [e.target.name]: e.target.value
     })
   }
@@ -23,50 +30,51 @@ function AddQuestion () {
     e.preventDefault()
     console.log(questionData)
 
-    // fetch('http://localhost:3001/api/questions', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(questionData)
-    // })
-    //   .then(response => response.json())
-    //   .then(data => console.log(data))
+    fetch('http://localhost:3001/api/questions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(questionData)
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
   }
 
-  // if (!isAuthenticated) {
-  //   return (
-  //     <div>
-  //       <h3>Para publicar una pregunta sólo inicia sesión</h3>
-  //     </div>
-  //   )
-  // }
+  if (!isAuthenticated) {
+    return (
+      <TitleWrapper>
+        <Subtitle>Para publicar una pregunta sólo inicia sesión</Subtitle>
+        <LoginButton />
+      </TitleWrapper>
+    )
+  }
 
   return (
-    <div>
-      <form onSubmit={handlePost}>
-        <label htmlFor="question">
+    <FormContainer>
+      <Form onSubmit={handlePost}>
+        <Label htmlFor="question">
           <span>Escribe tu pregunta</span>
-          <input
+          <Input
             type="text"
             id='question'
             name='question'
             onChange={handleChange}
           />
-        </label>
-        <label htmlFor="tag">
+        </Label>
+        <Label htmlFor="tag">
           <span>Elige una categoría</span>
-          <select name="tag" id="tag" onChange={handleChange}>
+          <Select name="tag" id="tag" onChange={handleChange}>
             <option value="">-</option>
-            <option value="tecnica">Técnica</option>
-            <option value="legal">Legal</option>
-            <option value="administrativa">Administrativa</option>
-            <option value="economica">Económica</option>
-          </select>
-        </label>
-        <input type="submit"/>
-      </form>
-    </div>
+            <option value="tecnica">Tecnología</option>
+            <option value="legal">Leyes</option>
+            <option value="administrativa">Administración</option>
+            <option value="economica">Economía</option>
+          </Select>
+        </Label>
+        <ButtonAnswer type="submit">Enviar</ButtonAnswer>
+      </Form>
+    </FormContainer>
   )
 }
 

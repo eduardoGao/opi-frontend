@@ -4,8 +4,8 @@ export const theme = {
   color: {
     primary: '#2863DE',
     secondary: '#FF5F73',
-    light: '#F3F0FF',
-    gray: '##AAAABC',
+    light: '#f6feff',
+    gray: '#9baaca',
     dark: '##454555'
   },
   font: {
@@ -26,10 +26,10 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
   body::-webkit-scrollbar {
-    width: 0.5em;
+    width: 0.3em;
   }
   body::-webkit-scrollbar-thumb {
-    background-color: ${theme.color.primary};
+    background-color: ${theme.color.gray};
     border-radius: 1rem;
   }
 `
