@@ -9,7 +9,9 @@ function AddQuestion () {
   const initialState = {
     question: null,
     tag: null,
-    user: user?.name
+    user: user?.name,
+    answer_text: null,
+    answer_user: null
   }
 
   const [questionData, setQuestionData] = useState(initialState)
@@ -17,6 +19,8 @@ function AddQuestion () {
   const handleChange = (e) => {
     setQuestionData({
       ...questionData,
+      answer_text: null,
+      answer_user: null,
       [e.target.name]: e.target.value
     })
   }

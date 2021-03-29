@@ -8,3 +8,8 @@ export const Questions = styled.section`
 export const TitleSection = styled.h4`
   font-size: 16px;
 `
+
+export const QuestionsScroll = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+`
