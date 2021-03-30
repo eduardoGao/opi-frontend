@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import LoginButton from '../Buttons/LoginButton'
 import { ButtonAnswer } from '../Buttons/styles'
-import { Subtitle, TitleWrapper, FormContainer, Label, Input, Select, Form } from './styles.js'
+import { Subtitle, TitleWrapper, FormContainer, Label, Input, Select } from './styles.js'
 
 function AddQuestion () {
   const { isAuthenticated, user } = useAuth0()
@@ -20,17 +20,16 @@ function AddQuestion () {
   const handleChange = (e) => {
     setQuestionData({
       ...questionData,
-      answer_text: null,
-      answer_user: null,
+      // answer_text: null,
+      // answer_user: null,
       [e.target.name]: e.target.value
     })
   }
 
-  const handlePost = (e) => {
+  const handlePostQuestion = (e) => {
     e.preventDefault()
-    console.log(questionData)
 
-    fetch('http://localhost:3001/api/questions', {
+    fetch('http://opiapi-env.eba-ahwtvszf.us-east-2.elasticbeanstalk.com/api/questions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -52,7 +51,7 @@ function AddQuestion () {
 
   return (
     <FormContainer>
-      <Form onSubmit={handlePost}>
+      <form onSubmit={handlePostQuestion}>
         <Label htmlFor="question">
           <span>Escribe tu pregunta</span>
           <Input
@@ -72,8 +71,9 @@ function AddQuestion () {
             <option value="economica">Economía</option>
           </Select>
         </Label>
-        <ButtonAnswer type="submit">Enviar</ButtonAnswer>
-      </Form>
+        <input type="submit" value="Enviar"/>
+        {/* <ButtonAnswer type="submit">Enviar</ButtonAnswer> */}
+      </form>
     </FormContainer>
   )
 }

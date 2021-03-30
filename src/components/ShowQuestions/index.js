@@ -7,7 +7,7 @@ const ShowQuestions = () => {
 
   const fetchQuestions = () => {
     try {
-      fetch('http://localhost:3001/api/questions')
+      fetch('http://opiapi-env.eba-ahwtvszf.us-east-2.elasticbeanstalk.com/api/questions')
         .then((response) => response.json())
         .then((data) => {
           setQuestions(data)

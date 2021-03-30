@@ -10,17 +10,13 @@ export const Subtitle = styled.p`
   margin-bottom: 8px;
 `
 
-export const FormContainer = styled.form`
+export const FormContainer = styled.div`
   border: 1px solid ${({ theme: { color } }) => color.gray};
   border-radius: 8px;
   margin: 32px 16px;
   padding: 16px;
   background: white;
   width: 500px
-`
-
-export const Form = styled.form`
-  
 `
 
 export const Label = styled.label`

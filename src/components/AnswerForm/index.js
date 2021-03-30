@@ -25,7 +25,7 @@ function AnswerForm ({ id, setAnswerForm }) {
     e.preventDefault()
     console.log(answerState)
 
-    fetch(`http://localhost:3001/api/questions/${id}`, {
+    fetch(`http://opiapi-env.eba-ahwtvszf.us-east-2.elasticbeanstalk.com/api/questions/${id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
