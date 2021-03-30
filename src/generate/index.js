@@ -81,7 +81,7 @@ const generateQuestion = {
 const handlePost = (e) => {
   e.preventDefault()
 
-  fetch('http://localhost:3001/api/questions', {
+  fetch('http://opiapi-env.eba-ahwtvszf.us-east-2.elasticbeanstalk.com/api/questions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

@@ -8,7 +8,7 @@ function Stats () {
 
   const fetchStats = () => {
     try {
-      fetch('http://localhost:3001/api/stats')
+      fetch('http://opiapi-env.eba-ahwtvszf.us-east-2.elasticbeanstalk.com/api/stats')
         .then((response) => response.json())
         .then((data) => {
           setStats(data)
